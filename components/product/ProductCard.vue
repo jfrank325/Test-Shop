@@ -6,7 +6,6 @@ const props = defineProps<{ product: Product }>();
 const { id, category, description, image, title, price } = props.product;
 const path = `${category}/${id.toString()}`
 // const { language } = useNavigatorLanguage();
-const { addToCart } = useCart();
 const formattedPrice = price && formatPrice(price)
 </script>
 
@@ -17,7 +16,8 @@ const formattedPrice = price && formatPrice(price)
             <h3 class="font-bold pb-3">{{ title }}</h3>
             <p class="pb-3">{{ description }}</p>
             <data :value="price" class="font-bold text-xl">{{ formattedPrice }}</data>
-            <button @click.prevent="addToCart(product)" class="w-fit bg-red-400 rounded px-2 my-2">Add To Cart</button>
+            <ProductAddToCartButton :product="product"/>
+            <!-- <button @click.prevent="addToCart(product)" class="w-fit bg-red-400 rounded px-2 my-2">Add To Cart</button> -->
         </article>
     </NuxtLink>
 </template>
