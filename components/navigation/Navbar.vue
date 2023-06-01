@@ -17,7 +17,7 @@ onClickOutside(nav, (event: any) => {
     <div>
         <header>
             <!-- <nav :class="[isTop ? 'bg-black h-12 py-8 px-6' : 'bg-white h-8 py-6 px-4']" -->
-            <nav class="bg-white h-8 py-6 px-4 flex justify-between items-center">
+            <nav class="bg-white h-8 py-6 px-4 flex justify-between items-center mb-4 md:mb-12">
                 <!-- class="4 flex justify-between items-center"> -->
                 <NavigationBurgerButton />
                 <NuxtLink to="/">

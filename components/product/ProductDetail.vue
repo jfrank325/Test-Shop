@@ -4,9 +4,7 @@ const route = useRoute();
 const params: [] | any = route.params
 const { id } = params;
 const product:Product = await fetchProduct(id);
-const formattedPrice = computed(() => product.price?.toLocaleString('USD', {
-    style: 'currency', currency: 'USD', minimumFractionDigits: 2,
-}))
+const formattedPrice = product.price && formatPrice(product.price)
 </script>
 
 <template>

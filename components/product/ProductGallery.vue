@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import Product from '~/types/product'
-const props = defineProps<{ products: Product[] }>();
+const props = defineProps<{ 'category':string }>();
+const products:Product[] = await fetchProducts(props.category);
 </script>
 
 <template>

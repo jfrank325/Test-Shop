@@ -3,9 +3,9 @@
 
 <template>
 <div ref="el">
-    <h1>Hello World</h1>
-    <div class="h-[100rem]"></div>
-    <!-- <HomeVideo /> -->
+    <h1 class="text-center text-4xl font-bold text-white -mt-6 absolute left-2/4 transform -translate-x-2/4 w-full">YT-Industries</h1>
+    <div class=""></div>
+    <HomeVideo />
 <TheFooter />
 </div>
 </template>

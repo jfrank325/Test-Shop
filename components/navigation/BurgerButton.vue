@@ -1,6 +1,5 @@
 <script setup lang='ts'>
 const { isOpen, toggleMenu, closeMenu } = useMenu();
-import { onClickOutside } from '@vueuse/core'
 const burgerButton = ref()
 onClickOutside(burgerButton, (event: any) => {
       if (burgerButton != event.target) closeMenu()

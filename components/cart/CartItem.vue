@@ -16,7 +16,7 @@ watchEffect(() => console.log({currentCartItem}));
              class="pb-3" />
         <h3 class="font-bold pb-3">{{ title }}</h3>
         <data :value="price"
-              class="font-bold text-xl">{{ formattedPrice }}</data>
+              class="font-bold">{{ formattedPrice }}</data>
         <div class="flex flex-col">
             <span>{{ currentCartItem.quantity }}</span>
             <button @click="addToCart(currentCartItem)">

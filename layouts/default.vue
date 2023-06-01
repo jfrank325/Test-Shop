@@ -4,7 +4,7 @@
 
 <template>
     <div class="min-h-screen">
-        <NavigationNavbar class="pb-6"/>
+        <NavigationNavbar class="md:pb-6"/>
         <NavigationMenu />
         <slot />
     </div>

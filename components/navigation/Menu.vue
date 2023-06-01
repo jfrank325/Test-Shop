@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import Categories from '~/types/categories';
 const { isOpen } = useMenu();
-// import { formatSlug } from '~/utils/formatSlug';
 const categoryData = await fetchCategories();
 </script>
 
