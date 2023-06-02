@@ -3,21 +3,23 @@ import Product from '~/types/product'
 const { addToCart, removeFromCart, cart } = useCart();
 const props = defineProps<{ product: Product }>();
 const message = ref('Add To Cart')
-const currentCartItem = cart?.items?.find(product => product.id == props.product.id) || props.product
+const currentCartItem = props.product
+// const { quantity } = p
 const cartFunction = reactive({
     name: addToCart
 })
 watchEffect(() => {
-    console.log(currentCartItem)
-    // if (!currentCartItem.quantity) {
-    //     message.value = 'Add To Cart'
-    //     cartFunction.name = addToCart
-    // }
     if (currentCartItem.quantity) {
         message.value = 'Remove From Cart'
         cartFunction.name = removeFromCart
     } 
+    const cartPastItemID = cart.items.find(item => item.id == currentCartItem.id)?.id
+    if (!cartPastItemID) {
+        message.value = 'Add To Cart'
+        cartFunction.name = addToCart
+    }
 })
+
 </script>
 
 <template>
