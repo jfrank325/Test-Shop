@@ -1,4 +1,4 @@
-type category = '' | undefined
+type category = ''
 
 export default interface Categories {
     data: category[]

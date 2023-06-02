@@ -20,7 +20,7 @@ onClickOutside(nav, (event: any) => {
             <nav class="bg-white h-8 py-6 px-4 flex justify-between items-center mb-4 md:mb-12">
                 <!-- class="4 flex justify-between items-center"> -->
                 <NavigationBurgerButton />
-                <NuxtLink to="/">
+                <NuxtLink to="/" class="absolute left-1/2 transform -translate-x-2/4">
                     <img src="../../assets/yt-windows-logo.webp"
                          alt="YT-Industries"
                          width="70"

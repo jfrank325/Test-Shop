@@ -5,6 +5,11 @@ export default interface Product {
     category: string,
     description?: string,
     image?: string,
-    rating?: object,
+    rating: object,
     quantity?: number
+}
+
+export interface Rating {
+    rate: number,
+    count: number
 }

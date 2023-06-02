@@ -3,9 +3,11 @@
 </script>
 
 <template>
-<div class="">
+<main class="">
+    <AboutHeader />
+    <AboutBody />
 
-</div>
+</main>
 </template>
 
 <style scoped>
