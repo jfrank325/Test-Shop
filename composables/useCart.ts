@@ -3,13 +3,30 @@ import Product from '~/types/product'
 
 interface Cart {
     items: Product[],
+    total: number
 }
 
 const cart: Cart = reactive({
-    items: []
+    items: [],
+    total: 0
 })
 
 export const useCart = () => {
+
+    const adjustTotal = () => {
+        if (!cart.items.length) {
+            cart.total = 0
+        } else if (cart.items.length == 1) {
+            if (cart.items[0].price && cart.items[0].quantity)
+                cart.total = cart.items[0].price * cart.items[0].quantity
+        } else {
+            const clonedItems = unref(cart.items)
+            cart.total = clonedItems.reduce((accumulator, currentItem): Product | any => {
+                if (currentItem.price && currentItem.quantity)
+                    return accumulator + currentItem.price * currentItem.quantity;
+            }, 0);
+        }
+    }
 
     const addToCart = (item: Product) => {
         if (cart.items.includes(item)) {
@@ -18,21 +35,20 @@ export const useCart = () => {
         } else {
             cart.items.unshift(item)
             item.quantity = 1
-            console.log({cart});
         }
+        adjustTotal();
     }
 
     const removeFromCart = (item: Product) => {
         if (cart.items.length) {
             if (cart.items.includes(item)) {
                 const itemToRemove = cart.items.find((cartItem) => item.id == cartItem.id);
-                console.log({itemToRemove});
                 cart.items = cart.items.filter(cartItem => cartItem.id !== itemToRemove?.id)
-                console.log({cart})
             }
         }
+        adjustTotal();
     }
-    
+
     const reduceFromCart = (item: Product) => {
         if (cart.items.length) {
             if (cart.items.includes(item)) {
@@ -44,6 +60,7 @@ export const useCart = () => {
                 }
             }
         }
+        adjustTotal();
     }
 
     return { cart, addToCart, removeFromCart, reduceFromCart }

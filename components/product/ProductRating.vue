@@ -3,7 +3,6 @@ import { Rating } from '~/types/product'
 const props = defineProps<{ rating: Rating }>();
 const filledStarsAmount = computed(() => Math.round(props.rating.rate))
 const unfilledStarsAmount = 5 - filledStarsAmount.value;
-console.log(filledStarsAmount.value, unfilledStarsAmount)
 </script>
 
 <template>

@@ -10,11 +10,9 @@ useHead({
     { name: 'description', content: 'The online store for award-winning and affordable MTBs ✨' },
     { property: 'og:image', content: 'https://cdn-prod.yt-industries.com/media/image/6e/2e/3a/yt_logo_industries.png' },
   ],
-  // link: [
-  //   {
-  //     rel: 'icon', type: 'image/webp', href: '/movies.webp',
-  //   },
-  // ],
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+  ],
 })
 // const scrollCheck = ref()
 // const { arrivedState, y } = useScroll(scrollCheck);
@@ -30,19 +28,17 @@ useHead({
 // if (process.client) {
 //  provide('isTop', top);
 // } top ? isTop.value = true : isTop.value = false;
-  
+
 
 </script>
 
 <template>
-<div class="overflow-scroll">
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div class="overflow-scroll">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
 
-</div>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
