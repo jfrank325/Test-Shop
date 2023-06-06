@@ -11,16 +11,18 @@ const formattedPrice = price && formatPrice(price)
 </script>
 
 <template>
-    <NuxtLink :to="path" class="sm:max-w[90vw] block my-6 mx-a md:max-w-xs">
-        <article class="flex flex-col text-center items-center">
-            <img :src="image" width="100" class="pb-3 max-h[80vw] w-auto max-w[80vw] md:max-w-[15rem]" />
-            <h3 class="font-bold pb-3">{{ title }}</h3>
-            <p class="pb-3">{{ description }}</p>
-            <ProductRating :rating="rating"/>
-            <data :value="price" class="font-bold text-xl">{{ formattedPrice }}</data>
-            <ProductAddToCartButton :product="product"/>
-        </article>
-    </NuxtLink>
+    <TransitionFadeIn>
+        <NuxtLink :to="path" class="sm:max-w[90vw] block my-6 mx-a md:max-w-xs">
+            <article class="flex flex-col text-center items-center">
+                <img :src="image" width="100" class="pb-3 max-h[80vw] w-auto max-w[80vw] md:max-w-[15rem]" />
+                <h3 class="font-bold pb-3">{{ title }}</h3>
+                <p class="pb-3">{{ description }}</p>
+                <ProductRating :rating="rating"/>
+                <data :value="price" class="font-bold text-xl">{{ formattedPrice }}</data>
+                <ProductAddToCartButton :product="product" :icon="false"/>
+            </article>
+        </NuxtLink>
+    </TransitionFadeIn>
 </template>
 
 <style scoped></style>

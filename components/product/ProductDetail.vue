@@ -20,7 +20,7 @@ const formattedPrice = price && formatPrice(price)
         <p class="pb-2">{{ description }}</p>
         <ProductRating :rating="rating"/>
         <data :value="price" class="font-bold text-xl">{{ formattedPrice }}</data>
-        <ProductAddToCartButton :product="product" />
+        <ProductAddToCartButton :product="product" :icon="false"/>
     </main>
 </template>
 

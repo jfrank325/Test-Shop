@@ -11,10 +11,10 @@ const openCategory = () => {
 <template>
 <div>
     <NuxtLink v-if="mainCategory.uri" :to="mainCategory.uri">
-                <p class="font-bold text-3xl uppercase my-6">{{ mainCategory.name }}</p>
+                <p class="font-bold text-2xl uppercase my-6">{{ mainCategory.name }}</p>
     </NuxtLink>
     <div v-else class="">
-        <p @click="openCategory" class="font-bold text-3xl uppercase my-6 cursor-pointer">{{ mainCategory.name }}</p>
+        <p @click="openCategory" class="font-bold text-2xl uppercase my-6 cursor-pointer">{{ mainCategory.name }}</p>
             <NavigationMenuSubMenu :isOpenSubMenu="isOpenSubMenu"/>
     </div>
 </div>

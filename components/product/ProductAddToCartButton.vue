@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import Product from '~/types/product'
 const { addToCart, removeFromCart, cart } = useCart();
-const props = defineProps<{ product: Product }>();
+const props = defineProps<{ product: Product, icon: Boolean }>();
 const message = ref('Add To Cart')
 const currentCartItem = props.product
 const cartFunction = reactive({
@@ -11,7 +11,7 @@ watchEffect(() => {
     if (currentCartItem.quantity) {
         message.value = 'Remove From Cart'
         cartFunction.name = removeFromCart
-    } 
+    }
     const matchingCartItemID = cart.items.find(item => item.id == currentCartItem.id)?.id
     if (!matchingCartItemID) {
         message.value = 'Add To Cart'
@@ -22,11 +22,17 @@ watchEffect(() => {
 </script>
 
 <template>
-<div>
-    <button @click.prevent="cartFunction.name(product)" class="w-fit bg-red-400 rounded px-3 py-1 my-2 font-semibold hover:shadow-lg hover:shadow-gray-500/50">{{ message }}</button>
-</div>
+    <div>
+        <button v-if="!icon"
+                @click.prevent="cartFunction.name(product)"
+                class="w-fit bg-red-400 rounded px-3 py-1 my-2 font-semibold hover:shadow-lg hover:shadow-gray-500/50">{{
+                    message }}</button>
+        <Icon v-else
+              @click.prevent="cartFunction.name(product)"
+              name="bi:trash"
+              color="#000"
+              size="25" />
+    </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

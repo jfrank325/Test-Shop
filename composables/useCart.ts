@@ -42,8 +42,7 @@ export const useCart = () => {
     const removeFromCart = (item: Product) => {
         if (cart.items.length) {
             if (cart.items.includes(item)) {
-                const itemToRemove = cart.items.find((cartItem) => item.id == cartItem.id);
-                cart.items = cart.items.filter(cartItem => cartItem.id !== itemToRemove?.id)
+                cart.items = cart.items.filter(cartItem => cartItem !== item)
             }
         }
         adjustTotal();
