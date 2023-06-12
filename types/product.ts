@@ -6,7 +6,7 @@ export default interface Product {
     description?: string,
     image?: string,
     rating: object,
-    quantity?: number
+    quantity: number
 }
 
 export interface Rating {

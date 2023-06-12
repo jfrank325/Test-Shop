@@ -1,4 +1,4 @@
-type category = ''
+type category = string
 
 export interface MainCategory {
     name: String,

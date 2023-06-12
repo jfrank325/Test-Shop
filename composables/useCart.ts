@@ -1,14 +1,19 @@
 import { reactive } from 'vue'
 import Product from '~/types/product'
+import formatPrice from '~/utils/formatPrice'
 
 interface Cart {
     items: Product[],
-    total: number
+    total: number,
+    formattedTotal: string
 }
+
+const orignalPrice = formatPrice(0)
 
 const cart: Cart = reactive({
     items: [],
-    total: 0
+    total: 0,
+    formattedTotal: ''
 })
 
 export const useCart = () => {
@@ -19,19 +24,19 @@ export const useCart = () => {
         } else if (cart.items.length == 1) {
             if (cart.items[0].price && cart.items[0].quantity)
                 cart.total = cart.items[0].price * cart.items[0].quantity
+            cart.formattedTotal = unref(formatPrice(cart.total))
         } else {
-            const clonedItems = unref(cart.items)
-            cart.total = clonedItems.reduce((accumulator, currentItem): Product | any => {
+            cart.total = cart.items.reduce((accumulator, currentItem): Product | any => {
                 if (currentItem.price && currentItem.quantity)
                     return accumulator + currentItem.price * currentItem.quantity;
             }, 0);
+            cart.formattedTotal = unref(formatPrice(cart.total))
         }
     }
 
     const addToCart = (item: Product) => {
         if (cart.items.includes(item)) {
-            const itemToAdd = cart.items.find((cartItem) => item.id == cartItem.id);
-            itemToAdd?.quantity ? itemToAdd.quantity += 1 : ''
+            item.quantity += 1
         } else {
             cart.items.unshift(item)
             item.quantity = 1
@@ -40,10 +45,8 @@ export const useCart = () => {
     }
 
     const removeFromCart = (item: Product) => {
-        if (cart.items.length) {
-            if (cart.items.includes(item)) {
-                cart.items = cart.items.filter(cartItem => cartItem !== item)
-            }
+        if (cart.items.length && cart.items.includes(item)) {
+            cart.items = cart.items.filter(cartItem => cartItem !== item)
         }
         adjustTotal();
     }
