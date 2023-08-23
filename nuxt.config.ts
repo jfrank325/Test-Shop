@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         '@nuxt/image-edge'
     ],
     image: {
+        format: ['webp', 'png', 'jpg', 'jpeg'],
         screens: {
             xs: 320,
             sm: 640,
@@ -19,7 +20,6 @@ export default defineNuxtConfig({
             lg: 1024,
             xl: 1280,
             xxl: 1536,
-            '2xl': 1536
         },
     },
     devtools: {

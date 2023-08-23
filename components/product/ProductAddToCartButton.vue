@@ -22,7 +22,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <div>
+    <div class="cursor-pointer">
         <button v-if="!icon"
                 @click.prevent="cartFunction.name(product)"
                 class="w-fit bg-red-400 rounded px-3 py-1 my-2 font-semibold hover:shadow-lg hover:shadow-gray-500/50">{{
